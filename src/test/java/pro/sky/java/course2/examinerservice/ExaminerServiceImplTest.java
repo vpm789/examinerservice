@@ -28,10 +28,9 @@ public class ExaminerServiceImplTest {
     public void shouldReturnErrorWhenGetIsIncorrect() {
         Question question1 = new Question("question1", "answer1");
         Question question2 = new Question("question2", "answer2");
-        Question question3 = new Question("question2", "answer3");
-        Question question4 = new Question("question3", "answer4");
-        Question question5 = new Question("question4", "answer5");
-        when(questionServiceMock.getAll()).thenReturn(Set.of(question1, question2, question3, question4, question5));
+        Question question3 = new Question("question3", "answer3");
+        when(questionServiceMock.getAll()).thenReturn(Set.of(question1, question2, question3));
+        when(questionServiceMock.getRandomQuestion()).thenReturn(question1).thenReturn(question2).thenReturn(question3);
         var q = out.getQuestions(3);
         assertEquals(3, q.size());
     }
