@@ -1,15 +1,13 @@
 package pro.sky.java.course2.examinerservice;
 
 import org.junit.jupiter.api.Test;
+import pro.sky.java.course2.examinerservice.repository.JavaQuestionRepository;
 import pro.sky.java.course2.examinerservice.service.JavaQuestionService;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JavaQuestionServiceTest {
-    private final JavaQuestionService out = new JavaQuestionService();
+    private final JavaQuestionService out = new JavaQuestionService(new JavaQuestionRepository());
     @Test
     public void shouldReturnErrorWhenAddIsIncorrect() {
         out.add("question1", "answer1");

@@ -2,26 +2,24 @@ package pro.sky.java.course2.examinerservice.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.examinerservice.Question;
-import pro.sky.java.course2.examinerservice.repository.JavaQuestionRepository;
+import pro.sky.java.course2.examinerservice.repository.MathQuestionRepository;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Random;
 
 @Service
-public class JavaQuestionService implements QuestionService {
+public class MathQuestionService implements QuestionService{
     Random random = new Random();
+    public final MathQuestionRepository mathQuestionRepository;
 
-    private final JavaQuestionRepository javaQuestionRepository;
-
-    public JavaQuestionService(JavaQuestionRepository javaQuestionRepository) {
-        this.javaQuestionRepository = javaQuestionRepository;
+    public MathQuestionService(MathQuestionRepository mathQuestionRepository) {
+        this.mathQuestionRepository = mathQuestionRepository;
     }
-
 
     @Override
     public Question add(String question, String answer) {
         if (question != null && answer != null) {
-            Question newQuestion = new Question(question, answer);
-            return add(newQuestion);
+            return add(new Question(question, answer));
         } else {
             return null;
         }
@@ -29,23 +27,22 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question add(Question question) {
-        javaQuestionRepository.add(question);
-        return question;
+        return mathQuestionRepository.add(question);
     }
 
     @Override
     public Question remove(Question question) {
-        return javaQuestionRepository.remove(question);
+        return mathQuestionRepository.remove(question);
     }
 
     @Override
     public Collection<Question> getAll() {
-        return javaQuestionRepository.getAll();
+        return mathQuestionRepository.getAll();
     }
 
     @Override
     public Question getRandomQuestion() {
-        Object[] arrQuestion = javaQuestionRepository.getAll().toArray();
+        Object[] arrQuestion = mathQuestionRepository.getAll().toArray();
         int randomIndex = random.nextInt(arrQuestion.length);
         return (Question) arrQuestion[randomIndex];
     }
