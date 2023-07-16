@@ -6,7 +6,7 @@ import pro.sky.java.course2.examinerservice.repository.JavaQuestionRepository;
 
 import java.util.*;
 
-@Service
+@Service("javaQuestionService")
 public class JavaQuestionService implements QuestionService {
     Random random = new Random();
 

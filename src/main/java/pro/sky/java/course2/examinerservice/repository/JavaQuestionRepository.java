@@ -10,11 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 @Repository
 public class JavaQuestionRepository implements QuestionRepository{
-    private final Set<Question> questions;
+    private final Set<Question> questions = new HashSet<>();
 
-    public JavaQuestionRepository() {
-        this.questions = new HashSet<>();
-    }
     @PostConstruct
     public void init() {
         questions.add(new Question("javaQuestion1", "javaAnswer1"));

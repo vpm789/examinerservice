@@ -13,8 +13,8 @@ import java.util.Random;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private QuestionService javaQuestionService;
-    private QuestionService mathQuestionService;
+    private final QuestionService javaQuestionService;
+    private final QuestionService mathQuestionService;
 
     public ExaminerServiceImpl(@Qualifier("javaQuestionService") QuestionService javaQuestionService,
                                @Qualifier("mathQuestionService") QuestionService mathQuestionService) {

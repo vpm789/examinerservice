@@ -7,7 +7,7 @@ import pro.sky.java.course2.examinerservice.repository.MathQuestionRepository;
 import java.util.Collection;
 import java.util.Random;
 
-@Service
+@Service("mathQuestionService")
 public class MathQuestionService implements QuestionService{
     Random random = new Random();
     public final MathQuestionRepository mathQuestionRepository;
